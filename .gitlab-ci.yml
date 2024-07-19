@@ -29,13 +29,13 @@ build:
     - nohup java -Xms128m -Xmx256m -jar target/commons-lang3-0.0.1-SNAPSHOT.jar > nohup.out 2>&1 &
     - sleep 10
     - cat ./commons-lang3.log
-    - curl 127.0.0.1:8080 || echo
+    - curl --connect-timeout 5 --max-time 10 127.0.0.1:8080 || echo
     - cat ./commons-lang3.log
     - sleep 10
-    - curl 127.0.0.1:8080 || echo
+    - curl --connect-timeout 5 --max-time 10 127.0.0.1:8080 || echo
     - cat ./commons-lang3.log
     - sleep 10
-    - curl 127.0.0.1:8080 || echo
+    - curl --connect-timeout 5 --max-time 10 127.0.0.1:8080 || echo
     - cat ./commons-lang3.log
   artifacts:
     name: build
