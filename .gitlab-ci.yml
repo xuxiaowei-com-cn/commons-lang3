@@ -24,7 +24,7 @@ build-mvnd:
     - echo $SETTINGS_XML_PATH
     - free -h || cat /proc/meminfo
     - mvnd -v
-    - mvnd clean package -DskipTests=true -s $SETTINGS_XML_PATH $MAVEN_OPTS
+    - mvnd clean package -DskipTests=true -U $MAVEN_OPTS
     - free -h || cat /proc/meminfo
     - nohup java -Xms128m -Xmx256m -jar target/commons-lang3-0.0.1-SNAPSHOT.jar > nohup.out 2>&1 &
     - sleep 10
@@ -68,7 +68,7 @@ build-mvn:
     - echo $SETTINGS_XML_PATH
     - free -h || cat /proc/meminfo
     - mvn -v
-    - mvn clean package -DskipTests=true -s $SETTINGS_XML_PATH $MAVEN_OPTS
+    - mvn clean package -DskipTests=true -U $MAVEN_OPTS
     - free -h || cat /proc/meminfo
     - nohup java -Xms128m -Xmx256m -jar target/commons-lang3-0.0.1-SNAPSHOT.jar > nohup.out 2>&1 &
     - sleep 10
@@ -112,7 +112,7 @@ build-mvn-3.9.8:
     - echo $SETTINGS_XML_PATH
     - free -h || cat /proc/meminfo
     - mvn -v
-    - mvn clean package -DskipTests=true -s $SETTINGS_XML_PATH $MAVEN_OPTS
+    - mvn clean package -DskipTests=true -U $MAVEN_OPTS
     - free -h || cat /proc/meminfo
     - nohup java -Xms128m -Xmx256m -jar target/commons-lang3-0.0.1-SNAPSHOT.jar > nohup.out 2>&1 &
     - sleep 10
