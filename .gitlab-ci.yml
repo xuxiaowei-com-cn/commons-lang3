@@ -88,3 +88,47 @@ build-mvn:
   cache:
     paths:
       - .m2/repository
+
+build-mvn-3.9.8:
+  stage: build
+  #image: maven:3.9.8-amazoncorretto-17
+  image: registry.cn-qingdao.aliyuncs.com/xuxiaoweicomcn/maven:3.9.8-amazoncorretto-17
+  variables:
+    MAVEN_OPTS: >-
+      -Dhttps.protocols=TLSv1.2
+      -Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository
+      -Dorg.slf4j.simpleLogger.showDateTime=true
+      -Djava.awt.headless=true
+    MAVEN_CLI_OPTS: >-
+      --batch-mode
+      --errors
+      --fail-at-end
+      --show-version
+      --no-transfer-progress
+      -DinstallAtEnd=true
+      -DdeployAtEnd=true
+    SETTINGS_XML_PATH: settings.xml
+  script:
+    - echo $SETTINGS_XML_PATH
+    - free -h || cat /proc/meminfo
+    - mvn -v
+    - mvn clean package -DskipTests=true -s $SETTINGS_XML_PATH $MAVEN_OPTS
+    - free -h || cat /proc/meminfo
+    - nohup java -Xms128m -Xmx256m -jar target/commons-lang3-0.0.1-SNAPSHOT.jar > nohup.out 2>&1 &
+    - sleep 10
+    - cat ./commons-lang3.log
+    - curl --connect-timeout 5 --max-time 10 127.0.0.1:8080 || echo
+    - cat ./commons-lang3.log
+    - sleep 10
+    - curl --connect-timeout 5 --max-time 10 127.0.0.1:8080 || echo
+    - cat ./commons-lang3.log
+    - sleep 10
+    - curl --connect-timeout 5 --max-time 10 127.0.0.1:8080 || echo
+    - cat ./commons-lang3.log
+  artifacts:
+    name: build
+    paths:
+      - target/*.jar
+  cache:
+    paths:
+      - .m2/repository
