@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 
@@ -36,6 +37,8 @@ public class LogHttpFilter extends HttpFilter implements Ordered {
     @Override
     protected void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
 
+        log.info(String.valueOf(LocalDateTime.now()));
+        log.info(String.valueOf(RandomStringUtils.randomAlphanumeric(8)));
         log.info(String.valueOf(LocalDateTime.now()));
 
         super.doFilter(request, response, chain);
