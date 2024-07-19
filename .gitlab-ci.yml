@@ -3,8 +3,8 @@ stages:
 
 build-mvnd:
   stage: build
-  #image: maven:3.6.3-openjdk-17
-  image: registry.cn-qingdao.aliyuncs.com/xuxiaoweicomcn/mvnd:1.0.1-dragonwell-17-anolis
+  #image: maven:3.6.3-jdk-8
+  image: registry.cn-qingdao.aliyuncs.com/xuxiaoweicomcn/mvnd:1.0.1-dragonwell-8-anolis
   variables:
     MAVEN_OPTS: >-
       -Dhttps.protocols=TLSv1.2
@@ -47,8 +47,8 @@ build-mvnd:
 
 build-mvn:
   stage: build
-  #image: maven:3.6.3-openjdk-17
-  image: registry.cn-qingdao.aliyuncs.com/xuxiaoweicomcn/maven:3.6.3-openjdk-17
+  #image: maven:3.6.3-jdk-8
+  image: registry.cn-qingdao.aliyuncs.com/xuxiaoweicomcn/maven:3.6.3-jdk-8
   variables:
     MAVEN_OPTS: >-
       -Dhttps.protocols=TLSv1.2
