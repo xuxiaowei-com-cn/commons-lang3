@@ -1,0 +1,46 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Java CI with Maven
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+      - name: Build with Maven
+        run: mvn clean package
+
+      - name: Test
+        run: |
+          free -h || cat /proc/meminfo
+          nohup java -Xms128m -Xmx256m -jar target/commons-lang3-0.0.1-SNAPSHOT.jar > nohup.out 2>&1 &
+          sleep 10
+          cat ./commons-lang3.log
+          curl --connect-timeout 5 --max-time 10 127.0.0.1:8080 || echo
+          cat ./commons-lang3.log
+          sleep 10
+          curl --connect-timeout 5 --max-time 10 127.0.0.1:8080 || echo
+          cat ./commons-lang3.log
+          sleep 10
+          curl --connect-timeout 5 --max-time 10 127.0.0.1:8080 || echo
+          cat ./commons-lang3.log
