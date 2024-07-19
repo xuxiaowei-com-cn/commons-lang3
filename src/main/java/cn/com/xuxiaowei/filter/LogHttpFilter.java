@@ -38,7 +38,7 @@ public class LogHttpFilter extends HttpFilter implements Ordered {
     protected void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
 
         log.info(String.valueOf(LocalDateTime.now()));
-        log.info(String.valueOf(RandomStringUtils.randomAlphanumeric(8)));
+        log.info(RandomStringUtils.randomAlphanumeric(8));
         log.info(String.valueOf(LocalDateTime.now()));
 
         super.doFilter(request, response, chain);
