@@ -59,3 +59,15 @@ docker-build:
     - echo $VERSION
     - /kaniko/executor version
     - /kaniko/executor --help
+    - /kaniko/executor
+      --context "${CI_PROJECT_DIR}"
+      --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
+      --build-arg "GROUP_ID=$GROUP_ID"
+      --build-arg "ARTIFACT_ID=$ARTIFACT_ID"
+      --build-arg "VERSION=$VERSION"
+      --build-arg "CI_PIPELINE_URL=$CI_PIPELINE_URL"
+      --build-arg "CI_JOB_ID=$CI_JOB_ID"
+      --destination "registry.cn-qingdao.aliyuncs.com/xuxiaoweicomcn/commons-lang3:$VERSION"
+      --destination "registry.cn-qingdao.aliyuncs.com/xuxiaoweicomcn/commons-lang3:$VERSION-$CI_PIPELINE_ID"
+      --destination "xuxiaoweicomcn/commons-lang3:$VERSION"
+      --destination "xuxiaoweicomcn/commons-lang3:$VERSION-$CI_PIPELINE_ID"
