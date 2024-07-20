@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>cn.com.xuxiaowei.test</groupId>
     <artifactId>commons-lang3</artifactId>
-    <version>3.15.0-1</version>
+    <version>3.15.0-1-SNAPSHOT</version>
     <name>commons-lang3</name>
     <description>此项目仅用于测试 org.apache.commons:commons-lang3，可独立运行，请勿在项目中引用</description>
     <url>https://github.com/xuxiaowei-com-cn/commons-lang3</url>
@@ -41,7 +41,7 @@
         <url>https://github.com/xuxiaowei-com-cn/commons-lang3</url>
         <connection>scm:git:https://git@github.com/xuxiaowei-com-cn/commons-lang3.git</connection>
         <developerConnection>http://xuxiaowei.com.cn</developerConnection>
-        <tag>v3.15.0-1</tag>
+        <tag/>
     </scm>
     <properties>
         <java.version>1.8</java.version>
