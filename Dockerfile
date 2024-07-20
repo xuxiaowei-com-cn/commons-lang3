@@ -27,4 +27,4 @@ ENV TZ=Asia/Shanghai \
     CI_PIPELINE_URL=${CI_PIPELINE_URL} \
     CI_JOB_ID=${CI_JOB_ID}
 
-CMD java -jar app.jar
+CMD java -jar app.jar && echo '在 Docker 中已正常运行并结束，将常驻内存' && sleep infinity
