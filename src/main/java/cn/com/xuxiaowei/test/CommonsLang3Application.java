@@ -26,6 +26,10 @@ public class CommonsLang3Application {
         System.out.println("项目地址：https://github.com/xuxiaowei-com-cn/commons-lang3");
         System.out.printf("此项目仅用于测试 %s 中 %s 使用时是否正常%n", NAME, METHOD);
         System.out.printf("如果下方不能正常输出一个随机数后程序正常停止，而是软件卡住无响应，则代表无法运行 %s 中的 %s%n", NAME, METHOD);
+        System.out.println("如果在 CentOS 系列中无法运行，请尝试安装运行 rng-tools：");
+        System.out.println("\tsudo yum -y install rng-tools");
+        System.out.println("\tsudo systemctl enable rngd.service");
+        System.out.println("\tsudo systemctl start rngd.service");
         System.out.println(RANDOM.get().nextInt());
         System.out.printf("恭喜，你的电脑可以运行 %s 中的 %s 方法%n", NAME, METHOD);
     }
