@@ -71,3 +71,5 @@ docker-build:
       --destination "registry.cn-qingdao.aliyuncs.com/xuxiaoweicomcn/commons-lang3:$VERSION-$CI_PIPELINE_ID"
       --destination "xuxiaoweicomcn/commons-lang3:$VERSION"
       --destination "xuxiaoweicomcn/commons-lang3:$VERSION-$CI_PIPELINE_ID"
+  tags:
+    - sg-docker
