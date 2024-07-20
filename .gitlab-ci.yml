@@ -21,7 +21,7 @@ build:
     SETTINGS_XML_PATH: settings.xml
   script:
     - echo $SETTINGS_XML_PATH
-    - mvn clean package -s $SETTINGS_XML_PATH
+    - mvn clean package source:jar javadoc:jar deploy -s $SETTINGS_XML_PATH
   cache:
     paths:
       - .m2/repository
