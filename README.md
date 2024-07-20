@@ -7,3 +7,5 @@
    sudo systemctl enable rngd.service
    sudo systemctl start rngd.service
    ```
+4. 运行 https://s01.oss.sonatype.org/content/repositories/public/cn/com/xuxiaowei/test/commons-lang3/ 中的 jar 包可以快速测试
+5. 运行 https://hub.docker.com/r/xuxiaoweicomcn/commons-lang3/tags 中的镜像可以快速测试
