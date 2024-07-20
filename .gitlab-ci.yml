@@ -21,7 +21,16 @@ build:
     SETTINGS_XML_PATH: settings.xml
   script:
     - echo $SETTINGS_XML_PATH
+    - GROUP_ID=`mvn -e help:evaluate -Dexpression=project.groupId -q -DforceStdout -s $SETTINGS_XML_PATH`
+    - ARTIFACT_ID=`mvn -e help:evaluate -Dexpression=project.artifactId -q -DforceStdout -s $SETTINGS_XML_PATH`
+    - VERSION=`mvn help:evaluate -Dexpression=project.version -q -DforceStdout -s $SETTINGS_XML_PATH`
+    - echo $GROUP_ID
+    - echo $ARTIFACT_ID
+    - echo $VERSION
     - mvn clean package source:jar javadoc:jar deploy -s $SETTINGS_XML_PATH
+  artifacts:
+    paths:
+      - target/*.jar
   cache:
     paths:
       - .m2/repository
