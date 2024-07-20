@@ -27,7 +27,7 @@ public class CommonsLang3Application {
         System.out.printf("此项目仅用于测试 %s 中 %s 使用时是否正常%n", NAME, METHOD);
         System.out.printf("如果下方不能正常输出一个随机数后程序正常停止，而是软件卡住无响应，则代表无法运行 %s 中的 %s%n", NAME, METHOD);
         System.out.println(RANDOM.get().nextInt());
-        System.out.printf("恭喜，你的电脑可以运行 %s 中的 %s 方法", NAME, METHOD);
+        System.out.printf("恭喜，你的电脑可以运行 %s 中的 %s 方法%n", NAME, METHOD);
     }
 
 }
