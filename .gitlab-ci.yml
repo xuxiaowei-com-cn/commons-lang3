@@ -22,6 +22,9 @@ build:
     SETTINGS_XML_PATH: settings.xml
   script:
     - echo $SETTINGS_XML_PATH
+    - GPG_FILE=`find / -name xuxiaowei_0x30F97859_SECRET`
+    - echo $GPG_FILE
+    - gpg --import $GPG_FILE
     - GROUP_ID=`mvn -e help:evaluate -Dexpression=project.groupId -q -DforceStdout -s $SETTINGS_XML_PATH`
     - ARTIFACT_ID=`mvn -e help:evaluate -Dexpression=project.artifactId -q -DforceStdout -s $SETTINGS_XML_PATH`
     - VERSION=`mvn help:evaluate -Dexpression=project.version -q -DforceStdout -s $SETTINGS_XML_PATH`
@@ -32,12 +35,13 @@ build:
     - echo "ARTIFACT_ID=$ARTIFACT_ID" >> .job_env
     - echo "VERSION=$VERSION" >> .job_env
     - cat .job_env
-    - mvn clean package source:jar javadoc:jar deploy -s $SETTINGS_XML_PATH
+    - mvn clean package source:jar javadoc:jar deploy -Pgpg -s $SETTINGS_XML_PATH
+    - ls -l target
   artifacts:
     reports:
       dotenv: .job_env
     paths:
-      - target/*.jar
+      - target/commons-lang3-*
   cache:
     paths:
       - .m2/repository
